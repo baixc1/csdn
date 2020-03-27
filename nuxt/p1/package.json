@@ -1,0 +1,10 @@
+{
+    "name": "my-app",
+    "scripts": {
+        "dev": "nuxt"
+    },
+    "dependencies": {
+        "js-cookie": "^2.2.1",
+        "nuxt": "^2.12.1"
+    }
+}
