@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const state = () => ({
     a: 0,
-    b: 0
+    b: 0,
+    authenticated: true
 })
 export const mutations = {
     setA(state, val) {

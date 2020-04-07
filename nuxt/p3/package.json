@@ -1,6 +1,7 @@
 {
     "scripts": {
-        "dev": "nuxt"
+        "dev": "nuxt",
+        "analyze": "nuxt build --a"
     },
     "dependencies": {
         "axios": "^0.19.2",
