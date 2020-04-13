@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<style>
+    canvas {
+        background-color: red;
+    }
+</style>
+
+<body>
+    <canvas width="400px" height="400px"></canvas>
+</body>
+
+<script>
+    var canvas = document.getElementsByTagName("canvas")[0];
+    var ctx = canvas.getContext('2d');
+    var fontSize = 20
+    ctx.font = `${fontSize}px Georgia`
+    var [txt, xText, yText] = ["Hello World", 100, 100]
+    var { width: wText } = ctx.measureText(txt)
+    var hText = fontSize
+    ctx.fillStyle = '#fff'
+    ctx.fillRect(1, 1, xText, yText)
+    ctx.fillRect(xText + wText, yText - hText, 100, 20)
+    ctx.translate(xText + wText / 2, yText - hText / 2)
+
+    //角度为累计增长数
+    f(0)
+    f(30)       
+    f(30)       //60deg
+    f(30)       //90deg
+    function f(i) {
+        deg = Math.PI / 180 * i
+        ctx.rotate(deg, deg)
+        /**
+            1. 中心点移动到文字正中
+            2. 坐标(0,0)时，中心点为文字左下角点
+            3. 所以：横坐标左移一半长，纵坐标下移一半宽
+        */
+        ctx.fillText(txt, -wText / 2, hText / 2)
+    }
+</script>
+
+</html>

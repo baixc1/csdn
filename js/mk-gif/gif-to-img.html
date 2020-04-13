@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<script src="libgif.js"></script>
+<script src="gif.js"></script>
+
+<body>
+    <img id="myGIF" src="1.gif" />
+</body>
+<script>
+    let img = document.getElementById('myGIF')
+    img.onload = function () {
+        let { width: imgW, height: imgH } = this
+        let gif = new GIF({
+            workers: 2,
+            quality: 10,
+            workerScript: './gif.worker.js'
+        });
+
+        //需在服务器端运行
+        let rub = new SuperGif({ gif: img })
+        rub.load(() => {
+            const imgs = []
+            const len = rub.get_length()
+            for (let i = 1; i <= len; i++) {
+                rub.move_to(i)      //遍历gif实例的每一帧
+                imgs.push(rub.get_canvas().toDataURL('image/jpeg', 0.6))
+            }
+            mkgif(imgs)
+        })
+        /**
+         * 1. 文字+图片，合成新gif
+         * 2. 使用库：gif.js, gif.worker.js
+         */
+        function mkgif(imgs) {
+            let canvas = document.createElement("canvas");
+            let ctx = canvas.getContext('2d');
+            canvas.width = imgW;
+            canvas.height = imgH;
+            gif.on('finished', blob => {        //生成新GIF
+                let url = URL.createObjectURL(blob)
+                console.log(url)
+                let img = document.createElement('img')
+                img.src = url
+                document.body.appendChild(img)
+            })
+            let i = 0
+
+            let len = imgs.length
+            imgs.forEach((item, index) => {
+                let img = new Image()
+                img.src = item
+                img.onload = () => {
+                    ctx.clearRect(0, 0, imgW, imgH)     //清除画布（避免影响下一帧）
+                    ctx.drawImage(img, 0, 0, imgW, imgH);   //GIF帧
+                    ani({ ctx, index, len, })               //文字
+                    gif.addFrame(canvas, { copy: true, delay: 100 })  //canvas生成帧
+                    if (++i >= imgs.length) {       //已添加所有帧
+                        gif.render()
+                    }
+                }
+            })
+        }
+    }
+
+    //动画前后状态
+    //动画 - 旋转
+    let rotateStart = 0
+    let rotateEnd = 360
+    //动画 - 平移
+    let translateStartX = 100
+    let translateStartY = 100
+    let translateEndX = 400
+    let translateEndY = 400
+    //旋转
+    let scaleStart = 1
+    let scaleEnd = 0.5
+    //字体
+    let fontSize = 40
+    let txt = "Hello World"
+    function ani({
+        ctx, index, len,
+    }) {
+        let rotateVal = rotateStart + index * (rotateEnd - rotateStart) / len
+        ctx.font = `${fontSize}px Georgia`
+        let xText = translateStartX + index * (translateEndX - translateStartX) / len
+        let yText = translateStartY + index * (translateEndY - translateStartY) / len
+        let scaleVal = scaleStart + index * (scaleEnd - scaleStart) / len
+        let { width: wText } = ctx.measureText(txt)
+        let hText = fontSize
+        ctx.save()          //状态保存，避免多次操作
+        ctx.scale(scaleVal, scaleVal)               //缩放
+        //旋转中心点(思路：https://blog.csdn.net/weixin_41837346/article/details/105488936)
+        ctx.translate(xText + wText / 2, yText - hText / 2)
+        deg = Math.PI / 180 * rotateVal
+        ctx.rotate(deg, deg)        
+        ctx.fillText(txt, -wText / 2, hText / 2)
+        ctx.restore()           //状态恢复
+    }
+</script>
+
+</html>
