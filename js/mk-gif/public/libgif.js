@@ -426,6 +426,7 @@
 
         var transparency = null;
         var delay = null;
+        var delays = []
         var disposalMethod = null;
         var disposalRestoreFromIdx = null;
         var lastDisposalMethod = null;
@@ -580,6 +581,7 @@
             clear();
             transparency = gce.transparencyGiven ? gce.transparencyIndex : null;
             delay = gce.delayTime;
+            delays.push(delay * 10)
             disposalMethod = gce.disposalMethod;
             // We don't have much to do with the rest of GCE.
         };
@@ -893,6 +895,7 @@
         }
 
         return {
+            delays,
             // play controls
             play: player.play,
             pause: player.pause,
