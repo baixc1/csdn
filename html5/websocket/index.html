@@ -1,0 +1,15 @@
+<html>
+
+<head>
+    <title>ws demo</title>
+    <meta charset="utf8">
+</head>
+
+
+<script>
+    var ws = new WebSocket('ws://localhost:3000');
+    ws.onmessage = msg => console.log(msg)
+    ws.send('aaa');
+</script>
+
+</html>
