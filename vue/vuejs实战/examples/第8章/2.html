@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div id="app">
+			<div v-test:msg.a.b="{a: 'message'}"></div>
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			Vue.directive('test',{
+				bind(el,binding,vnode){
+					console.log(vnode)
+					el.innerHTML = JSON.stringify(binding,null,' ')
+				}
+			})
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: 'some text'
+				}
+			});
+		</script>
+	</body>
+</html>

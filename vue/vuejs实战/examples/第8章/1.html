@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<div id="app">
+			<input v-focus />
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			Vue.directive('focus',{
+				inserted(el){
+					el.focus()
+				}
+			})
+			var app = new Vue({
+				el: '#app'
+			});
+		</script>
+	</body>
+</html>

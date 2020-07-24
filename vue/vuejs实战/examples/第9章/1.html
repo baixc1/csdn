@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head> </head>
+	<body>
+		<div id="app">
+			<ele></ele>
+			<ele>empty</ele>
+		</div>
+		<script src="../vue.min.js"></script>
+		<script>
+			Vue.component('ele', {
+				render(h) {
+					if (this.$slots.default) {
+						return h('div', this.$slots.default);
+					}
+					let listNode;
+					if (this.list.length) {
+						listNode = h(
+							'ul',
+							this.list.map((item) => h('li', item))
+						);
+					} else {
+						listNode = h('p', 'no data');
+					}
+					return h('div', [
+						listNode,
+						h('input', {
+							attrs: {
+								placeholder: '请输入',
+							},
+							style: {
+								width: '200px',
+							},
+							on: {
+								keyup: (e) => {
+									if (e.keyCode === 13) {
+										this.list.push(e.target.value);
+										e.target.value = '';
+									}
+								},
+							},
+						}),
+					]);
+				},
+				data() {
+					return {
+						list: [],
+						value: '',
+					};
+				},
+			});
+			var app = new Vue({
+				el: '#app',
+			});
+		</script>
+	</body>
+</html>

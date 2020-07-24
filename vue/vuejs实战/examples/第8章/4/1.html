@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8" >
+	</head>
+	<body>
+		<div id="app">
+			<div v-time="timeNow"></div>
+			<div v-time="timeBefore"></div>
+		</div>
+		<script src="../../vue.min.js"></script>
+		<script src="time.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+          timeNow: Date.now(),
+          timeBefore: 1594212291111
+				}
+			});
+		</script>
+	</body>
+</html>

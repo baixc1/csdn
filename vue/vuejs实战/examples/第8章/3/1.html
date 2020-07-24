@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css" >
+	</head>
+	<body>
+		<div id="app">
+			<div class="main" v-clickoutside.esc="handleClose">
+				<button @click="show=true">点击显示下拉菜单</button>
+				<div class="dropdown" v-show="show">
+					<p>下拉框内容，点击外部区域关闭</p>
+				</div>
+			</div>
+		</div>
+		<script src="../../vue.min.js"></script>
+		<script src="clickoutside.js"></script>
+		<script src="index.js"></script>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: false
+				},
+				methods: {
+					handleClose(){
+						this.show = false
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
