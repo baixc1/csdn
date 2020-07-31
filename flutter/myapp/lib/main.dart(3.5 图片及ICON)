@@ -1,0 +1,200 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(
+      new MaterialApp(
+        home: new MyHomePage(),
+      ),
+    );
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('text'),
+      ),
+      body: Texts(),
+    );
+  }
+}
+
+class Texts extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // return Demo1();
+    // return ImageAndIconRoute();
+    return Demo2();
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  final url1 = 'images/caomei.jpg';
+  final url2 =
+      'https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baobaozhidao@2x-af409f9dbe.png';
+
+  @override
+  Widget build(BuildContext context) {
+    return new Column(
+      //显式指定对齐方式为左对齐，排除对齐干扰
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Image>[
+        Image(
+          image: AssetImage(url1),
+          width: 100,
+        ),
+        Image.asset(
+          url1,
+          width: 100.0,
+        ),
+        Image(
+          image: NetworkImage(url2),
+          width: 100.0,
+        ),
+        Image.network(
+          url2,
+          width: 100.0,
+        )
+      ],
+    );
+  }
+}
+
+class ImageAndIconRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var img = AssetImage("images/caomei.jpg");
+    return SingleChildScrollView(
+      child: Column(
+          children: <Image>[
+        Image(
+          image: img,
+          height: 50.0,
+          width: 100.0,
+          fit: BoxFit.fill,
+        ),
+        Image(
+          image: img,
+          height: 50,
+          width: 50.0,
+          fit: BoxFit.contain,
+        ),
+        Image(
+          image: img,
+          width: 100.0,
+          height: 50.0,
+          fit: BoxFit.cover,
+        ),
+        Image(
+          image: img,
+          width: 100.0,
+          height: 50.0,
+          fit: BoxFit.fitWidth,
+        ),
+        Image(
+          image: img,
+          width: 100.0,
+          height: 50.0,
+          fit: BoxFit.fitHeight,
+        ),
+        Image(
+          image: img,
+          width: 100.0,
+          height: 50.0,
+          fit: BoxFit.scaleDown,
+        ),
+        Image(
+          image: img,
+          height: 50.0,
+          width: 100.0,
+          fit: BoxFit.none,
+        ),
+        Image(
+          image: img,
+          width: 100.0,
+          color: Colors.blue,
+          colorBlendMode: BlendMode.difference,
+          fit: BoxFit.fill,
+        ),
+        Image(
+          image: img,
+          width: 100.0,
+          height: 200.0,
+          repeat: ImageRepeat.repeatY,
+        )
+      ].map((e) {
+        return Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: 100,
+                child: e,
+              ),
+            ),
+            Text(e.fit.toString())
+          ],
+        );
+      }).toList()),
+    );
+  }
+}
+
+class Demo2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    String icons = "\uE914 \uE000 \uE90D";
+    return new Column(
+      //显式指定对齐方式为左对齐，排除对齐干扰
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          icons,
+          style: TextStyle(
+            fontFamily: "MaterialIcons",
+            fontSize: 24.0,
+            color: Colors.green,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.accessible,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.error,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.fingerprint,
+              color: Colors.green,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              MyIcons.book,
+              color: Colors.purple,
+            ),
+            Icon(
+              MyIcons.wechat,
+              color: Colors.green,
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class MyIcons {
+  // 眼睫毛 图标
+  static const IconData book =
+      const IconData(0xe603, fontFamily: 'myIcon', matchTextDirection: true);
+  // 眼睛 图标
+  static const IconData wechat =
+      const IconData(0xe657, fontFamily: 'myIcon', matchTextDirection: true);
+}

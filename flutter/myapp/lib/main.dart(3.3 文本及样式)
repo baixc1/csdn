@@ -1,0 +1,113 @@
+import 'package:flutter/material.dart';
+
+// 声明文本样式
+const textStyle = const TextStyle(
+  fontFamily: 'Yanone_Kaffeesatz',
+);
+void main() => runApp(
+      new MaterialApp(
+        home: new MyHomePage(),
+      ),
+    );
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('text'),
+      ),
+      body: Texts(),
+    );
+  }
+}
+
+class Texts extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text2();
+  }
+}
+
+// 3.3.1 Text - 3.3.3 TextSpan
+class Text1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Column(
+      //显式指定对齐方式为左对齐，排除对齐干扰
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "Hello world",
+          textAlign: TextAlign.left,
+        ),
+        Text(
+          "Hello world! I'm Jack. " * 4,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        Text(
+          "Hello world",
+          textScaleFactor: 1.5,
+        ),
+        Text(
+          "Hello world",
+          style: TextStyle(
+              color: Colors.blue,
+              fontSize: 18.0,
+              height: 1.2,
+              fontFamily: "Courier",
+              background: new Paint()..color = Colors.yellow,
+              decoration: TextDecoration.underline,
+              decorationStyle: TextDecorationStyle.dashed),
+        ),
+        Text.rich(TextSpan(children: [
+          TextSpan(text: "Home: "),
+          TextSpan(
+            text: "https://flutterchina.club",
+            style: TextStyle(color: Colors.blue),
+          ),
+        ]))
+      ],
+    );
+  }
+}
+
+// 3.3.4 DefaultTextStyle
+class Text2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Column(
+      //显式指定对齐方式为左对齐，排除对齐干扰
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        DefaultTextStyle(
+          //1.设置文本默认样式
+          style: TextStyle(
+            color: Colors.red,
+            fontSize: 20.0,
+          ),
+          textAlign: TextAlign.start,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text("hello world"),
+              Text("I am Jack"),
+              Text(
+                "I am Jack",
+                style: TextStyle(
+                  inherit: false,
+                  color: Colors.grey, //2.不继承默认样式
+                ),
+              ),
+            ],
+          ),
+        ),
+        Text(
+          "I am Jack",
+          style: textStyle,
+        )
+      ],
+    );
+  }
+}
