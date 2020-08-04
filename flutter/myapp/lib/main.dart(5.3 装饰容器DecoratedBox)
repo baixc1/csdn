@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Title'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Demo1') {
+      return Demo1();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Demo1'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      //上下左右各添加16像素补白
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        //显式指定对齐方式为左对齐，排除对齐干扰
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue[300], Colors.green[700]],
+              ), //背景渐变
+              borderRadius: BorderRadius.circular(16.0), //16像素圆角
+              boxShadow: [
+                //阴影
+                BoxShadow(
+                  color: Colors.black54,
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 4.0,
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 18.0),
+              child: Text(
+                "Login",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

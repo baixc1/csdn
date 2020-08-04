@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Home'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Demo1') {
+      return Demo1();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Demo1'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      //上下左右各添加16像素补白
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        //显式指定对齐方式为左对齐，排除对齐干扰
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            //左边添加8像素补白
+            padding: const EdgeInsets.only(left: 8.0),
+            child: Text("Hello world"),
+          ),
+          Padding(
+            //上下各添加8像素补白
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Text("I am Jack"),
+          ),
+          Padding(
+            // 分别指定四个方向的补白
+            padding: const EdgeInsets.fromLTRB(20.0, .0, 20.0, 20.0),
+            child: Text("Your friend"),
+          )
+        ],
+      ),
+    );
+  }
+}

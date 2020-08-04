@@ -1,0 +1,180 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Title'),
+        actions: <Widget>[
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 3,
+              valueColor: AlwaysStoppedAnimation(Colors.white70),
+            ),
+          ),
+          UnconstrainedBox(
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 3,
+                valueColor: AlwaysStoppedAnimation(Colors.white70),
+              ),
+            ),
+          )
+        ],
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Demo1') {
+      return Demo1();
+    } else if (args == 'Demo2') {
+      return Demo2();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Demo1'),
+        cmBtn('Demo2'),
+      ],
+    );
+  }
+}
+
+Widget greenBox = DecoratedBox(
+  decoration: BoxDecoration(color: Colors.green),
+);
+
+Widget blueBox = DecoratedBox(
+  decoration: BoxDecoration(color: Colors.blue),
+);
+
+Widget redBox = DecoratedBox(
+  decoration: BoxDecoration(color: Colors.red),
+);
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      //上下左右各添加16像素补白
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        //显式指定对齐方式为左对齐，排除对齐干扰
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          ConstrainedBox(
+            constraints: BoxConstraints(
+                minWidth: double.infinity, //宽度尽可能大
+                minHeight: 50.0 //最小高度为50像素
+                ),
+            child: Container(height: 5.0, child: blueBox),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+                minWidth: double.infinity, //宽度尽可能大
+                minHeight: 50.0 //最小高度为50像素
+                ),
+            child: Container(height: 100.0, child: greenBox),
+          ),
+          SizedBox(
+            width: 80.0,
+            height: 80.0,
+            child: blueBox,
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints.tightFor(width: 80.0, height: 80.0),
+            child: greenBox,
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+                minHeight: 80.0,
+                maxHeight: 80.0,
+                minWidth: 80.0,
+                maxWidth: 80.0),
+            child: blueBox,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Demo2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8.00),
+      child: Column(
+        children: <Widget>[
+          ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 60.0, minHeight: 60.0), //父
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minWidth: 90.0, minHeight: 20.0), //子
+              child: blueBox,
+            ),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 90.0, minHeight: 20.0),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minWidth: 60.0, minHeight: 60.0),
+              child: redBox,
+            ),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 60.0, maxHeight: 60.0), //父
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 90.0, maxHeight: 20.0), //子
+              child: Container(width: 100, height: 100.0, child: blueBox),
+            ),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 90.0, maxHeight: 20.0),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 60.0, maxHeight: 60.0),
+              child: Container(width: 100, height: 100.0, child: redBox),
+            ),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 60.0, minHeight: 30.0), //父
+            child: UnconstrainedBox(
+              //“去除”父级限制
+              child: ConstrainedBox(
+                constraints:
+                    BoxConstraints(minWidth: 130.0, minHeight: 20.0), //子
+                child: redBox,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

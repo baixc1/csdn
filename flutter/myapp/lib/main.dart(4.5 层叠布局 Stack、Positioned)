@@ -1,0 +1,125 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Home'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'MyConstrainedBox') {
+      return MyConstrainedBox();
+    } else if (args == 'MyConstrainedBoxFit') {
+      return MyConstrainedBoxFit();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('MyConstrainedBox'),
+        cmBtn('MyConstrainedBoxFit'),
+      ],
+    );
+  }
+}
+
+class MyConstrainedBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints.expand(),
+      child: Stack(
+        alignment: Alignment.center, //指定未定位或部分定位widget的对齐方式
+        children: <Widget>[
+          Container(
+            child: Text(
+              "Hello world",
+              style: TextStyle(color: Colors.white),
+            ),
+            color: Colors.red,
+          ),
+          Positioned(
+            left: 18.0,
+            child: Text("I am Jack"),
+          ),
+          Positioned(
+            top: 18.0,
+            child: Text("Your friend"),
+          ),
+          Positioned(
+            right: 18.0,
+            child: Text("I am Moon"),
+          ),
+          Positioned(
+            bottom: 18.0,
+            child: Text("I am Sun"),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class MyConstrainedBoxFit extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints.expand(),
+      child: Stack(
+        alignment: Alignment.center, //指定未定位或部分定位widget的对齐方式r
+        fit: StackFit.expand, //未定位widget占满Stack整个空间
+        children: <Widget>[
+          Container(
+            child: Text("first"),
+            color: Colors.red,
+          ),
+          Positioned(
+            left: 18,
+            top: 18,
+            right: 18,
+            bottom: 18,
+            child: Container(
+              color: Colors.green,
+              child: Text("second"),
+            ),
+          ),
+          Positioned(
+            left: 36,
+            top: 36,
+            right: 36,
+            bottom: 36,
+            child: Container(
+              color: Colors.blue,
+              child: Text("third"),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

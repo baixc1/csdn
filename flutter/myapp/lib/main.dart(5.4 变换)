@@ -1,0 +1,251 @@
+import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Title'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Demo1') {
+      return Demo1();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Demo1'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      //上下左右各添加16像素补白
+      padding: EdgeInsets.only(top: 10.0, left: 10.0),
+      child: Column(
+        //显式指定对齐方式为左对齐，排除对齐干扰
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(8.0),
+            color: Colors.deepOrange,
+            child: const Text('Apartment for rent!'),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 50.0),
+            child: Row(children: <Widget>[
+              Container(
+                color: Colors.black,
+                child: new Transform(
+                  alignment: Alignment.topRight, //相对于坐标系原点的对齐方式
+                  transform: new Matrix4.skewY(0.3), //沿Y轴倾斜0.3弧度
+                  child: new Container(
+                    padding: const EdgeInsets.all(8.0),
+                    color: Colors.deepOrange,
+                    child: const Text('Apartment for rent!'),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Container(
+                  color: Colors.black,
+                  child: new Transform(
+                    transform: new Matrix4.skewY(0.3), //沿Y轴倾斜0.3弧度
+                    child: new Container(
+                      padding: const EdgeInsets.all(8.0),
+                      color: Colors.deepOrange,
+                      child: const Text('Apartment for rent!'),
+                    ),
+                  ),
+                ),
+              )
+            ]),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.blue),
+              //默认原点为左上角，左移20像素，向上平移5像素
+              child: Text("Hello world"),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.blue),
+              //默认原点为左上角，左移20像素，向上平移5像素
+              child: Transform.translate(
+                offset: Offset(-20.0, -5.0),
+                child: Text("Hello world"),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 40.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.red),
+              child: Transform.rotate(
+                //旋转90度
+                angle: math.pi / 2,
+                child: Text("Hello world"),
+              ),
+            ),
+          ),
+          DecoratedBox(
+            decoration: BoxDecoration(color: Colors.red),
+            child: Transform.scale(
+              scale: 1.5, //放大到1.5倍
+              child: Text("Hello world"),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              DecoratedBox(
+                decoration: BoxDecoration(color: Colors.red),
+                child: Transform.scale(
+                  scale: 1.5,
+                  child: Text("Hello world"),
+                ),
+              ),
+              Text(
+                "你好",
+                style: TextStyle(color: Colors.green, fontSize: 18.0),
+              )
+            ],
+          ),
+          Padding(
+              padding: EdgeInsets.symmetric(vertical: 40.0),
+              child: Row(
+                children: <Widget>[
+                  DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.green),
+                    child: Transform.rotate(
+                      //旋转90度
+                      angle: math.pi / 4,
+                      child: Transform.translate(
+                        offset: Offset(0, 0),
+                        child: Text("Hello world"),
+                      ),
+                    ),
+                  ),
+                  DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.red),
+                    child: Transform.rotate(
+                      //旋转90度
+                      angle: math.pi / 4,
+                      child: Transform.translate(
+                        offset: Offset(20, 0),
+                        child: Text("Hello world"),
+                      ),
+                    ),
+                  ),
+                  DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.blue),
+                    child: Transform.rotate(
+                      //旋转90度
+                      angle: math.pi / 4,
+                      child: Transform.translate(
+                        offset: Offset(40, 0),
+                        child: Text("Hello world"),
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+          Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: Row(
+              children: <Widget>[
+                DecoratedBox(
+                  decoration: BoxDecoration(color: Colors.green),
+                  //默认原点为左上角，左移20像素，向上平移5像素
+                  child: Transform.translate(
+                    offset: Offset(40, 0),
+                    child: Transform.rotate(
+                      //旋转90度
+                      angle: 0,
+                      child: Text("Hello world"),
+                    ),
+                  ),
+                ),
+                DecoratedBox(
+                  decoration: BoxDecoration(color: Colors.red),
+                  //默认原点为左上角，左移20像素，向上平移5像素
+                  child: Transform.translate(
+                    offset: Offset(40, 0),
+                    child: Transform.rotate(
+                      //旋转90度
+                      angle: math.pi / 8,
+                      child: Text("Hello world"),
+                    ),
+                  ),
+                ),
+                DecoratedBox(
+                  decoration: BoxDecoration(color: Colors.blue),
+                  //默认原点为左上角，左移20像素，向上平移5像素
+                  child: Transform.translate(
+                    offset: Offset(40, 0),
+                    child: Transform.rotate(
+                      //旋转90度
+                      angle: math.pi / 4,
+                      child: Text("Hello world"),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 30),
+            child: Row(children: <Widget>[
+              DecoratedBox(
+                decoration: BoxDecoration(color: Colors.red),
+                //将Transform.rotate换成RotatedBox
+                child: RotatedBox(
+                  quarterTurns: 1, //旋转90度(1/4圈)
+                  child: Text("Hello world"),
+                ),
+              ),
+              Text(
+                "你好",
+                style: TextStyle(color: Colors.green, fontSize: 18.0),
+              )
+            ]),
+          ),
+        ],
+      ),
+    );
+  }
+}

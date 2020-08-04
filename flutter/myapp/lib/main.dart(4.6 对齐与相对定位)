@@ -1,0 +1,115 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Home'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Align') {
+      return Demo1();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Align'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          height: 120.0,
+          width: 120.0,
+          color: Colors.blue[50],
+          child: Align(
+            alignment: Alignment.topRight,
+            child: FlutterLogo(
+              size: 60,
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.red[50],
+          child: Align(
+            widthFactor: 2,
+            heightFactor: 2,
+            alignment: Alignment.topRight,
+            child: FlutterLogo(
+              size: 60,
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.blue[50],
+          child: Align(
+            widthFactor: 2,
+            heightFactor: 2,
+            alignment: Alignment(2, 0.0),
+            child: FlutterLogo(
+              size: 60,
+            ),
+          ),
+        ),
+        Container(
+          height: 120.0,
+          width: 120.0,
+          color: Colors.red[50],
+          child: Align(
+            alignment: FractionalOffset(0.2, 0.4),
+            child: FlutterLogo(
+              size: 60,
+            ),
+          ),
+        ),
+        DecoratedBox(
+          decoration: BoxDecoration(color: Colors.red),
+          child: Center(
+            child: Text("xxx"),
+          ),
+        ),
+        DecoratedBox(
+          decoration: BoxDecoration(color: Colors.red),
+          child: Center(
+            widthFactor: 2,
+            heightFactor: 3,
+            child: Text("xxx"),
+          ),
+        )
+      ],
+    );
+  }
+}

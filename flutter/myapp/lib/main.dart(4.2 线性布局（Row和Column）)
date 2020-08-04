@@ -1,0 +1,183 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('text'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'tsqk') {
+      return Demo3();
+    }
+    if (args == 'Expanded') {
+      return Demo4();
+    }
+    Widget cmBtn(page, text) {
+      return RaisedButton(
+        child: Text(text),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('tsqk', '特殊情况'),
+        cmBtn('Expanded', 'Expanded'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      //测试Row对齐方式，排除Column默认居中对齐的干扰
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(" hello world "),
+            Text(" I am Jack "),
+          ],
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(" hello world "),
+            Text(" I am Jack "),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          textDirection: TextDirection.rtl,
+          children: <Widget>[
+            Text(" hello world "),
+            Text(" I am Jack "),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          verticalDirection: VerticalDirection.down,
+          children: <Widget>[
+            Text(
+              " hello world ",
+              style: TextStyle(fontSize: 30.0),
+            ),
+            Text(" I am Jack "),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class CenterColumnRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Text("hi"),
+        Text("world"),
+      ],
+    );
+  }
+}
+
+// 整个手机屏幕中间对齐
+class Demo2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(minWidth: double.infinity),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text("hi"),
+          Text("world"),
+        ],
+      ),
+    );
+  }
+}
+
+//特殊情况
+class Demo3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max, //有效，外层Colum高度为整个屏幕
+          children: <Widget>[
+            Container(
+              color: Colors.red,
+              child: Column(
+                mainAxisSize: MainAxisSize.max, //无效，内层Colum高度为实际高度
+                children: <Widget>[
+                  Text("hello world "),
+                  Text("I am Jack "),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//Expanded
+class Demo4 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max, //有效，外层Colum高度为整个屏幕
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                color: Colors.red,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center, //垂直方向居中对齐
+                  children: <Widget>[
+                    Text("hello world "),
+                    Text("I am Jack "),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
