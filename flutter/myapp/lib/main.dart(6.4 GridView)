@@ -1,0 +1,206 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('text'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Demo1') {
+      return Demo1();
+    } else if (args == 'Demo2') {
+      return Demo2();
+    } else if (args == 'InfiniteGridView') {
+      return InfiniteGridView();
+    } else if (args == 'Demo3') {
+      return Demo3();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Demo1'),
+        cmBtn('Demo2'),
+        cmBtn('InfiniteGridView'),
+        cmBtn('Demo3'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: GridView(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, //横轴三个子widget
+                  childAspectRatio: 1.0 //宽高比为1时，子widget
+                  ),
+              children: <Widget>[
+                Icon(Icons.ac_unit),
+                Icon(Icons.airport_shuttle),
+                Icon(Icons.all_inclusive),
+                Icon(Icons.beach_access),
+                Icon(Icons.cake),
+                Icon(Icons.free_breakfast)
+              ]),
+        ),
+        Expanded(
+          child: GridView.count(
+            crossAxisCount: 3,
+            childAspectRatio: 1.0,
+            children: <Widget>[
+              Icon(Icons.ac_unit),
+              Icon(Icons.airport_shuttle),
+              Icon(Icons.all_inclusive),
+              Icon(Icons.beach_access),
+              Icon(Icons.cake),
+              Icon(Icons.free_breakfast),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class Demo2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: GridView(
+            padding: EdgeInsets.zero,
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 130.0, childAspectRatio: 2.0 //宽高比为2
+                ),
+            children: <Widget>[
+              Icon(Icons.ac_unit),
+              Icon(Icons.airport_shuttle),
+              Icon(Icons.all_inclusive),
+              Icon(Icons.beach_access),
+              Icon(Icons.cake),
+              Icon(Icons.free_breakfast),
+            ],
+          ),
+        ),
+        Expanded(
+          child: GridView.extent(
+            maxCrossAxisExtent: 120.0,
+            childAspectRatio: 2.0,
+            children: <Widget>[
+              Icon(Icons.ac_unit),
+              Icon(Icons.airport_shuttle),
+              Icon(Icons.all_inclusive),
+              Icon(Icons.beach_access),
+              Icon(Icons.cake),
+              Icon(Icons.free_breakfast),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class InfiniteGridView extends StatefulWidget {
+  @override
+  _InfiniteGridViewState createState() => new _InfiniteGridViewState();
+}
+
+class _InfiniteGridViewState extends State<InfiniteGridView> {
+  List<IconData> _icons = []; //保存Icon数据
+
+  @override
+  void initState() {
+    // 初始化数据
+    super.initState();
+    _retrieveIcons();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, //每行三列
+            childAspectRatio: 1.0 //显示区域宽高相等
+            ),
+        itemCount: _icons.length,
+        itemBuilder: (context, index) {
+          //如果显示到最后一个并且Icon总数小于200时继续获取数据
+          if (index == _icons.length - 1 && _icons.length < 200) {
+            _retrieveIcons();
+          }
+          return Icon(_icons[index]);
+        });
+  }
+
+  //模拟异步获取数据
+  void _retrieveIcons() {
+    Future.delayed(Duration(milliseconds: 200)).then((e) {
+      setState(() {
+        _icons.addAll([
+          Icons.ac_unit,
+          Icons.airport_shuttle,
+          Icons.all_inclusive,
+          Icons.beach_access,
+          Icons.cake,
+          Icons.free_breakfast
+        ]);
+      });
+    });
+  }
+}
+
+class Demo3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new StaggeredGridView.countBuilder(
+      crossAxisCount: 4,
+      itemCount: 8,
+      itemBuilder: (BuildContext context, int index) => new Container(
+          color: Colors.green,
+          child: new Center(
+            child: new CircleAvatar(
+              backgroundColor: Colors.white,
+              child: new Text('$index'),
+            ),
+          )),
+      staggeredTileBuilder: (int index) =>
+          new StaggeredTile.count(2, index.isEven ? 2 : 1),
+      mainAxisSpacing: 4.0,
+      crossAxisSpacing: 4.0,
+    );
+  }
+}

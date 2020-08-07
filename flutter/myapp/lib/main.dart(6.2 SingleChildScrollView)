@@ -1,0 +1,72 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  return runApp(
+    new MaterialApp(routes: {
+      "/": (context) => MyHomePage(), //注册首页路由
+    }),
+  );
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Title'),
+      ),
+      body: Demos(),
+    );
+  }
+}
+
+class Demos extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var args = ModalRoute.of(context).settings.arguments;
+    if (args == 'Demo1') {
+      return Demo1();
+    }
+
+    Widget cmBtn(page) {
+      return RaisedButton(
+        child: Text(page),
+        onPressed: () {
+          Navigator.pushNamed(context, "/", arguments: page);
+        },
+      );
+    }
+
+    return Column(
+      children: <Widget>[
+        cmBtn('Demo1'),
+      ],
+    );
+  }
+}
+
+class Demo1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    return Scrollbar(
+      // 显示进度条
+      child: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            //动态创建一个List<Widget>
+            children: str
+                .split("")
+                //每一个字母都用一个Text显示,字体为原来的两倍
+                .map((c) => Text(
+                      c,
+                      textScaleFactor: 2.0,
+                    ))
+                .toList(),
+          ),
+        ),
+      ),
+    );
+  }
+}
