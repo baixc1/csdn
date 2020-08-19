@@ -26,8 +26,6 @@ class Demos extends StatelessWidget {
     var args = ModalRoute.of(context).settings.arguments;
     if (args == 'Demo1') {
       return Demo1();
-    } else if (args == 'Demo2') {
-      return Demo2();
     }
 
     Widget cmBtn(page) {
@@ -42,7 +40,6 @@ class Demos extends StatelessWidget {
     return Column(
       children: <Widget>[
         cmBtn('Demo1'),
-        cmBtn('Demo2'),
       ],
     );
   }
@@ -203,6 +200,7 @@ class Demo1 extends StatelessWidget {
             ));
           },
         ),
+        DialogRoute()
       ],
     );
   }
@@ -212,30 +210,6 @@ Stream<int> counter() {
   return Stream.periodic(Duration(seconds: 1), (i) {
     return i;
   });
-}
-
-class Demo2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<int>(
-      stream: counter(), //
-      //initialData: ,// a Stream<int> or null
-      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-        if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-            return Text('没有Stream');
-          case ConnectionState.waiting:
-            return Text('等待数据...');
-          case ConnectionState.active:
-            return Text('active: ${snapshot.data}');
-          case ConnectionState.done:
-            return Text('Stream已关闭');
-        }
-        return null; // unreachable
-      },
-    );
-  }
 }
 
 Future<T> showCustomDialog<T>({
@@ -278,4 +252,316 @@ Widget _buildMaterialDialogTransitions(
     ),
     child: child,
   );
+}
+
+class DialogRoute extends StatefulWidget {
+  @override
+  _DialogRouteState createState() {
+    return new _DialogRouteState();
+  }
+}
+
+class _DialogRouteState extends State<DialogRoute> {
+  bool withTree = false; // 复选框选中状态
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        RaisedButton(
+          child: Text("对话框5"),
+          onPressed: () async {
+            bool delete = await showDeleteConfirmDialog2();
+            if (delete == null) {
+              print("取消删除");
+            } else {
+              print("同时删除子目录: $delete");
+            }
+          },
+        ),
+        RaisedButton(
+          child: Text("对话框6"),
+          onPressed: () async {
+            bool delete = await showDeleteConfirmDialog3();
+            if (delete == null) {
+              print("取消删除");
+            } else {
+              print("同时删除子目录: $delete");
+            }
+          },
+        ),
+        RaisedButton(
+          child: Text("对话框7"),
+          onPressed: () async {
+            bool delete = await showDeleteConfirmDialog4();
+            if (delete == null) {
+              print("取消删除");
+            } else {
+              print("同时删除子目录: $delete");
+            }
+          },
+        ),
+        RaisedButton(
+          child: Text("对话框8"),
+          onPressed: () async {
+            bool delete = await showDeleteConfirmDialog5();
+            if (delete == null) {
+              print("取消删除");
+            } else {
+              print("同时删除子目录: $delete");
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Future<bool> showDeleteConfirmDialog2() {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        withTree = false; // 默认复选框不选中
+        return AlertDialog(
+          title: Text("提示"),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("您确定要删除当前文件吗?"),
+              Row(
+                children: <Widget>[
+                  Text("同时删除子目录？"),
+                  Checkbox(
+                    value: withTree,
+                    onChanged: (bool value) {
+                      //复选框选中状态发生变化时重新构建UI
+                      setState(() {
+                        //更新复选框状态
+                        withTree = !withTree;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("取消"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text("删除"),
+              onPressed: () {
+                //执行删除操作
+                Navigator.of(context).pop(withTree);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<bool> showDeleteConfirmDialog3() {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        bool _withTree = false; //记录复选框是否选中
+        return AlertDialog(
+          title: Text("提示"),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("您确定要删除当前文件吗?"),
+              Row(
+                children: <Widget>[
+                  Text("同时删除子目录？"),
+                  DialogCheckbox(
+                    value: _withTree, //默认不选中
+                    onChanged: (bool value) {
+                      //更新选中状态
+                      _withTree = !_withTree;
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("取消"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text("删除"),
+              onPressed: () {
+                // 将选中状态返回
+                Navigator.of(context).pop(_withTree);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<bool> showDeleteConfirmDialog4() {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        bool _withTree = false; //记录复选框是否选中
+        return AlertDialog(
+          title: Text("提示"),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("您确定要删除当前文件吗?"),
+              Row(
+                children: <Widget>[
+                  Text("同时删除子目录？"),
+                  StatefulBuilder(
+                    builder: (context, _setState) {
+                      return Checkbox(
+                        value: _withTree, //默认不选中
+                        onChanged: (bool value) {
+                          //_setState方法实际就是该StatefulWidget的setState方法，
+                          //调用后builder方法会重新被调用
+                          _setState(() {
+                            //更新选中状态
+                            _withTree = !_withTree;
+                          });
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("取消"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text("删除"),
+              onPressed: () {
+                //执行删除操作
+                print(withTree);
+                // Navigator.of(context).pop(withTree);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<bool> showDeleteConfirmDialog5() {
+    bool _withTree = false;
+    return showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("提示"),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("您确定要删除当前文件吗?"),
+              Row(
+                children: <Widget>[
+                  Text("同时删除子目录？"),
+                  Checkbox(
+                    // 依然使用Checkbox组件
+                    value: _withTree,
+                    onChanged: (bool value) {
+                      // 此时context为对话框UI的根Element，我们
+                      // 直接将对话框UI对应的Element标记为dirty
+                      (context as Element).markNeedsBuild();
+                      _withTree = !_withTree;
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("取消"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text("删除"),
+              onPressed: () {
+                // 执行删除操作
+                Navigator.of(context).pop(_withTree);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+// 单独封装一个内部管理选中状态的复选框组件
+class DialogCheckbox extends StatefulWidget {
+  DialogCheckbox({
+    Key key,
+    this.value,
+    @required this.onChanged,
+  });
+
+  final ValueChanged<bool> onChanged;
+  final bool value;
+
+  @override
+  _DialogCheckboxState createState() => _DialogCheckboxState();
+}
+
+class _DialogCheckboxState extends State<DialogCheckbox> {
+  bool value;
+
+  @override
+  void initState() {
+    value = widget.value;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      value: value,
+      onChanged: (v) {
+        //将选中状态通过事件的形式抛出
+        widget.onChanged(v);
+        setState(() {
+          //更新自身选中状态
+          value = v;
+        });
+      },
+    );
+  }
+}
+
+class StatefulBuilder extends StatefulWidget {
+  const StatefulBuilder({
+    Key key,
+    @required this.builder,
+  })  : assert(builder != null),
+        super(key: key);
+
+  final StatefulWidgetBuilder builder;
+
+  @override
+  _StatefulBuilderState createState() => _StatefulBuilderState();
+}
+
+class _StatefulBuilderState extends State<StatefulBuilder> {
+  @override
+  Widget build(BuildContext context) => widget.builder(context, setState);
 }
