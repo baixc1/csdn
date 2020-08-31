@@ -28,7 +28,7 @@ export default {
       console.log(this.$el.textContent === 'new message') // true
     })
     await this.$nextTick()
-    console.log(this.$el.textContent === 'new message')
+    console.log(this.$el.textContent === 'new message')  // true
   }
 }
 </script>

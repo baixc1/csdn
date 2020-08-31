@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div>
+			first div
+			<a href="2.html">跳转</a>
+		</div>
+		<script>
+			console.dir(document.body.innerHTML);
+			document.addEventListener('DOMContentLoaded', (e) => {
+				console.log('DOMContentLoaded');
+				console.log(document.readyState);
+			});
+			// debugger;
+		</script>
+		<div>
+			second div
+		</div>
+		<script>
+			console.log(document.readyState);
+			document.addEventListener('readystatechange', () =>
+				console.log('event:' + document.readyState)
+			);
+			window.onload = function() {
+				console.log(document.readyState);
+				// same as window.addEventListener('load', (event) => {
+				console.log('Page loaded');
+
+				// image is loaded at this time
+				console.log(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+			};
+
+			let analyticsData = { a: 1 };
+
+			window.addEventListener('unload', function() {
+				navigator.sendBeacon(
+					'http://localhost:5050/',
+					JSON.stringify(analyticsData)
+				);
+			});
+
+			window.onbeforeunload = function() {
+				// return 'There are unsaved changes. Leave now?';
+				// return false;
+				// return null;
+			};
+		</script>
+
+		<!-- <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0" /> -->
+	</body>
+</html>
