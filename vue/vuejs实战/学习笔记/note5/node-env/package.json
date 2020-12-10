@@ -1,0 +1,20 @@
+{
+	"name": "node-env",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"test1": "NODE_ENV=test1 node 1.js",
+		"build": "NODE_ENV=build webpack --config webpack.config.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"webpack-cli": "^3.3.12"
+	},
+	"devDependencies": {
+		"webpack": "^4.44.1"
+	}
+}
