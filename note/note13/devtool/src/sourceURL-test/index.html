@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="foo">foo</button>
+  <button id="foo2">foo2</button>
+  <script>
+    var script = `function foo() {
+      alert('called foo');
+    }
+    //# sourceURL=my-foo.js`;
+
+    var script2 = `function foo2() {
+      alert('called foo2');
+    }
+    //# sourceURL=my-foo2.js`;
+
+    eval(script);
+    eval(script2)
+
+    var button = document.getElementById("foo");
+    button.addEventListener("click", foo, false);
+
+    var button = document.getElementById("foo2");
+    button.addEventListener("click", foo2, false);
+  </script>
+</body>
+
+</html>
