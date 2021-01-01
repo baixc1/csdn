@@ -4,6 +4,7 @@
   "description": "```javascript npm i -D webpack webpack-cli ``` #### entry 指定打包入口，依赖图的入口是entry 单入口/多入口 #### output 告诉 webpack 如何将编译后的文件输入到磁盘",
   "main": "webpack.config.js",
   "dependencies": {
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
