@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+  <div id="nav">
+    <a href="#/page1">page1</a>
+    <a href="#/page2">page2</a>
+    <a href="#/page3">page3</a>
+    <a href="#/notfound">notfound</a>
+  </div>
+  <div id="container"></div>
+
+  <script>
+    const list = [
+      {
+        path: '/page1',
+        content: '我是page1'
+      },
+      {
+        path: '/page2',
+        content: '我是page2'
+      },
+      {
+        path: '/page3',
+        content: '我是page3'
+      },
+      {
+        path: '*',
+        content: 'any'
+      }
+    ]
+
+    const routers = {}
+    list.forEach(({ path, content }) => {
+      routers[path] = content
+    })
+    window.addEventListener('hashchange', render)
+    render()
+    function render() {
+      $('#container').html(routers[location.hash.slice(1)] || routers['*'])
+    }
+
+  </script>
+</body>
+
+
+</html>
