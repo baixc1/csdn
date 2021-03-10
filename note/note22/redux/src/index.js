@@ -4,15 +4,19 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import Routes from "./client/Routes";
+import { Provider } from "react-redux";
+import store from "./client/redux";
 
 const app = express();
 
 app.use(express.static("public"));
 app.get("*", (req, res) => {
   const content = renderToString(
-    <StaticRouter location={req.path}>
-      <Routes />
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={req.path}>
+        <Routes />
+      </StaticRouter>
+    </Provider>
   );
 
   const html = `
