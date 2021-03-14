@@ -16,9 +16,15 @@ Promise.allSettled = function (list) {
       value
     }
     if (isResolve) {
-      res[index].status = 'fulfilled'
+      res[index] = {
+        status: 'fulfilled',
+        value
+      }
     } else {
-      res[index].status = 'rejected'
+      res[index] = {
+        status: 'rejected',
+        reason: value
+      }
     }
     count++
     if (count === len) {
