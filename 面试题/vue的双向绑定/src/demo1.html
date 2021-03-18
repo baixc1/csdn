@@ -1,0 +1,40 @@
+<!-- vue2 响应式问题  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="example-1">
+      <li v-for="item in items">{{ item }}</li>
+    </ul>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: "#example-1",
+      data: {
+        items: ["a", "b", "c"],
+      },
+    });
+    // 直接修改数据不是实时响应
+    vm.items[1] = "x";
+    vm.items[3] = "d";
+    console.log(vm.items);
+    // ['a', 'x', 'c', 'd']
+
+    // 使用 $set 修改数据是实时响应
+    setTimeout(() => {
+      vm.$set(vm.items, 1, "x1");
+      vm.$set(vm.items, 3, "d2");
+      console.log(vm.items);
+    }, 1000);
+
+    setTimeout(() => {
+      vm.items = ["a", "c", "b"];
+    }, 2000);
+  </script>
+</html>
