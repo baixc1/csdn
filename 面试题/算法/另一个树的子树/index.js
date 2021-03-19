@@ -1,4 +1,4 @@
-const { getTree } = require("../util");
+const { getTree, dfs, kmp } = require("../util");
 /**
  * @param {TreeNode} s
  * @param {TreeNode} t
@@ -25,15 +25,17 @@ var isSubtree = function (s, t) {
     }
   }
 };
-console.log(getTree([3, 4, 5, 1, 2, null, 6]));
-console.log(isSubtree(getTree([3, 4, 5, 1, 2, null, 6]), getTree([4, 1, 2])));
+// console.log(getTree([3, 4, 5, 1, 2, null, 6]));
+// console.log(isSubtree(getTree([3, 4, 5, 1, 2, null, 6]), getTree([4, 1, 2])));
 
 // 方法二：深度优先搜索序列上做串匹配（null补全）
 // kpm 算法匹配字串
-
 // 获取先序遍历的数组
 
+var isSubtree = function (s, t) {
+  return kmp(dfs(s), dfs(t)) !== -1;
+};
 const s = getTree([3, 4, 5, 1, 2, null, 6]);
 const t = getTree([4, 1, 2]);
 
-var isSubtree = function (s, t) {};
+console.log(isSubtree(s, t));
