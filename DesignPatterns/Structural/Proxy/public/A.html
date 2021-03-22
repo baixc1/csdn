@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function callback(data) {
+        console.log("成功数据：", data);
+      }
+    </script>
+    <iframe name="proxyIframe" id="proxyIframe" src=""></iframe>
+    <form
+      action="http://localhost:3000/template"
+      method="post"
+      target="proxyIframe"
+    >
+      <input name="fn" value="callback" />
+      <input name="proxy" value="http://localhost:3001/B.html" />
+      <input type="submit" value="提交" />
+    </form>
+  </body>
+</html>

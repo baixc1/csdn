@@ -6,6 +6,7 @@ class CopyrightWebpackPlugin {
   // 调用插件的时候会调用此方法
   // compiler 是webpack的实例
   apply(compiler) {
+    console.log("apply");
     // emit钩子是生成资源到 output 目录之前。异步钩子
     // compilation存放了这次打包的所有内容
     compiler.hooks.emit.tapAsync(
