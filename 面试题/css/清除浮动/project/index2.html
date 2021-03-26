@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 500px;
+        border: 1px solid red;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      .float {
+        width: 200px;
+        height: 200px;
+        background: #ccc;
+        float: left;
+      }
+      .nofloat {
+        width: 300px;
+        height: 150px;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="float">浮动</div>
+      <div class="nofloat" style="display: flex">不想被浮动影响</div>
+    </div>
+    <div class="wrap">
+      <div class="float">浮动</div>
+      <div class="nofloat">被浮动影响</div>
+    </div>
+    <script>
+      // 500 = 300 + 200
+    </script>
+  </body>
+</html>

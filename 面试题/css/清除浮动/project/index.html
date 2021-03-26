@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 300px;
+        height: 200px;
+        border: 1px solid red;
+        margin: 0 auto;
+      }
+      .wrap1 {
+        width: 300px;
+        border: 3px solid red;
+        margin: 0 auto;
+        margin-top: 20px;
+      }
+      .float {
+        width: 100px;
+        height: 100px;
+        background: #ccc;
+        float: left;
+      }
+      .nofloat {
+        width: 300px;
+        background: red;
+      }
+      .clear {
+        clear: both;
+      }
+      .after::after {
+        display: block;
+        content: "";
+        clear: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="float">浮动对后面元素的影响</div>
+      <div class="nofloat">
+        不想被浮动影影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="float">清除浮动对后面元素的影响</div>
+      <div class="clear"></div>
+      <div class="nofloat">
+        不想被浮动影影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响不想被浮动影响
+      </div>
+    </div>
+    <div class="wrap1">
+      <div class="float">浮动对父元素的影响</div>
+    </div>
+    <div class="wrap1" style="clear: left; margin-top: 200px">
+      <div class="float">清除浮动对父元素的影响（无效）</div>
+    </div>
+    <div class="wrap1" style="margin-top: 200px">
+      <div class="float">清除浮动对父元素的影响(clear,block)</div>
+      <!-- <div style="clear: left; display: inline-block"></div> -->
+      <div style="clear: left; display: block"></div>
+    </div>
+    <div class="wrap1" style="overflow: hidden">
+      <div class="float">清除浮动对父元素的影响（overflow: hidden;）</div>
+    </div>
+    <div class="wrap1" style="display: flex">
+      <div class="float">清除浮动对父元素的影响（display: flex;）</div>
+    </div>
+    <div class="wrap1 after">
+      <div class="float">清除浮动对父元素的影响（伪元素）</div>
+    </div>
+  </body>
+  <script>
+    // clear 只能作用于子元素
+    //  clear CSS 属性指定一个元素是否必须移动(清除浮动后)到在它之前的浮动元素下面
+  </script>
+</html>
