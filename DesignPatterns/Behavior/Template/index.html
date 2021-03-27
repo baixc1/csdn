@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .alert {
+        position: relative;
+        padding: 30px;
+        width: 300px;
+        border: 1px solid #ddd;
+        clear: both;
+      }
+      .alert:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .a-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+      }
+      .a-confirm,
+      .cancel {
+        margin-right: 5px;
+        display: inline-block;
+        border: 1px solid #666;
+        padding: 5px 10px;
+      }
+      .right {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./index.js"></script>
+    <script>
+      new Alert({
+        content: "我是基础弹窗",
+      }).init();
+      new RightAlert({
+        content: "我是右侧按钮弹窗",
+      }).init();
+      new TitleAlert({
+        content: "我是标题提示框",
+        title: "我是标题",
+      }).init();
+      new CancelAlert({
+        content: "标题提示框+取消按钮",
+        title: "我是标题",
+        cancel: "取消按钮",
+        fail() {
+          console.log("fail..");
+        },
+      }).init();
+    </script>
+  </body>
+</html>
