@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-base": "webpack --config ./lib/webpack.base.js",
     "build-prod": "webpack --config ./lib/webpack.prod.js",
-    "dev": "webpack serve --open --config ./lib/webpack.dev.js"
+    "dev": "webpack serve --open --config ./lib/webpack.dev.js",
+    "eslint": "eslint ./lib --fix"
   },
   "keywords": [],
   "author": "",
@@ -40,5 +41,10 @@
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1"
   }
 }
