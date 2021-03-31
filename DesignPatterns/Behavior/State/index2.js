@@ -48,7 +48,8 @@ MarryState()
   .change("move", "jump") // 移动-跳跃
   .goes();
 
-// 实例话后使用（不影响原对象）
+console.log("--------------------------------");
+// 实例化后使用（不影响原对象）
 var marry = new MarryState();
 marry
   .change("quat", "shoot", "move") // 蹲下-射击-移动

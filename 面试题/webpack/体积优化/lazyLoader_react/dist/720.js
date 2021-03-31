@@ -1,0 +1,1 @@
+(self.webpackChunklazyLoader_react=self.webpackChunklazyLoader_react||[]).push([[720],{720:(e,a,r)=>{"use strict";r.r(a),r.d(a,{default:()=>n});var t=r(466);function n(){return t.createElement("div",null,"OtherComponnet")}}}]);
