@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 module.exports = {
   module: {
@@ -13,5 +14,6 @@ module.exports = {
     new webpack.DllReferencePlugin({
       manifest: require("./build/library/library.json"),
     }),
+    new BundleAnalyzerPlugin(),
   ],
 };

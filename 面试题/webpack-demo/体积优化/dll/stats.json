@@ -1,0 +1,1042 @@
+{
+  "hash": "474a58f1c404575c248c",
+  "version": "5.28.0",
+  "time": 567,
+  "builtAt": 1617355735179,
+  "publicPath": "auto",
+  "outputPath": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/dist",
+  "assetsByChunkName": {
+    "main": [
+      "main.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "main.js",
+      "size": 2143,
+      "emitted": false,
+      "comparedForEmit": true,
+      "cached": false,
+      "info": {
+        "javascriptModule": false,
+        "minimized": true,
+        "size": 2143
+      },
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "related": {},
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    }
+  ],
+  "chunks": [
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 3670,
+      "sizes": {
+        "javascript": 3670
+      },
+      "names": [
+        "main"
+      ],
+      "idHints": [],
+      "runtime": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "auxiliaryFiles": [],
+      "hash": "82dc90ed9239f7a8ee81",
+      "childrenByOrder": {},
+      "id": 179,
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "layer": null,
+          "size": 3544,
+          "sizes": {
+            "javascript": 3544
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "name": "./src/index.js",
+          "nameForCondition": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "index": 0,
+          "preOrderIndex": 0,
+          "index2": 3,
+          "postOrderIndex": 3,
+          "cacheable": true,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 374,
+            "resolving": 19,
+            "restoring": 0,
+            "building": 355,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 19,
+            "dependencies": 0
+          },
+          "id": 579,
+          "issuerId": null,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "./src",
+              "loc": "main",
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": [],
+          "providedExports": [],
+          "optimizationBailout": [
+            "Statement (VariableDeclaration) with side effects in source code at 26:0-45:19",
+            "ModuleConcatenation bailout: Cannot concat with delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325: Module Concatenation is not implemented for DelegatedModule",
+            "ModuleConcatenation bailout: Cannot concat with delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325: Module Concatenation is not implemented for DelegatedModule"
+          ],
+          "depth": 0
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/dynamic",
+          "layer": null,
+          "size": 42,
+          "sizes": {
+            "javascript": 42
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "delegated 935 from dll-reference library_3ce6e843d84f1ff6a325",
+          "name": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "nameForCondition": null,
+          "index": 3,
+          "preOrderIndex": 3,
+          "index2": 2,
+          "postOrderIndex": 2,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "total": 374,
+                "resolving": 19,
+                "restoring": 0,
+                "building": 355,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 19,
+                "dependencies": 0
+              },
+              "id": 579
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 3,
+            "resolving": 3,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 3,
+            "dependencies": 0
+          },
+          "id": 466,
+          "issuerId": 579,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "harmony side effect evaluation",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react-dom",
+              "loc": "24:0-33",
+              "moduleId": 579,
+              "resolvedModuleId": 579
+            },
+            {
+              "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react-dom",
+              "loc": "47:0-15",
+              "moduleId": 579,
+              "resolvedModuleId": 579
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+            "createPortal",
+            "findDOMNode",
+            "flushSync",
+            "hydrate",
+            "render",
+            "unmountComponentAtNode",
+            "unstable_batchedUpdates",
+            "unstable_createPortal",
+            "unstable_renderSubtreeIntoContainer",
+            "version"
+          ],
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module Concatenation is not implemented for DelegatedModule"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/dynamic",
+          "layer": null,
+          "size": 42,
+          "sizes": {
+            "javascript": 42
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+          "name": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "nameForCondition": null,
+          "index": 1,
+          "preOrderIndex": 1,
+          "index2": 1,
+          "postOrderIndex": 1,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "total": 374,
+                "resolving": 19,
+                "restoring": 0,
+                "building": 355,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 19,
+                "dependencies": 0
+              },
+              "id": 579
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 4,
+            "resolving": 4,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 4,
+            "dependencies": 0
+          },
+          "id": 886,
+          "issuerId": 579,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "harmony side effect evaluation",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "23:0-26",
+              "moduleId": 579,
+              "resolvedModuleId": 579
+            },
+            {
+              "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "40:26-45",
+              "moduleId": 579,
+              "resolvedModuleId": 579
+            },
+            {
+              "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "45:2-17",
+              "moduleId": 579,
+              "resolvedModuleId": 579
+            },
+            {
+              "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "harmony import specifier",
+              "active": true,
+              "explanation": "",
+              "userRequest": "react",
+              "loc": "47:30-49",
+              "moduleId": 579,
+              "resolvedModuleId": 579
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "Children",
+            "Component",
+            "Fragment",
+            "Profiler",
+            "PureComponent",
+            "StrictMode",
+            "Suspense",
+            "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+            "cloneElement",
+            "createContext",
+            "createElement",
+            "createFactory",
+            "createRef",
+            "forwardRef",
+            "isValidElement",
+            "lazy",
+            "memo",
+            "useCallback",
+            "useContext",
+            "useDebugValue",
+            "useEffect",
+            "useImperativeHandle",
+            "useLayoutEffect",
+            "useMemo",
+            "useReducer",
+            "useRef",
+            "useState",
+            "version"
+          ],
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module Concatenation is not implemented for DelegatedModule"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/dynamic",
+          "layer": null,
+          "size": 42,
+          "sizes": {
+            "javascript": 42
+          },
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "identifier": "external \"library_3ce6e843d84f1ff6a325\"",
+          "name": "external \"library_3ce6e843d84f1ff6a325\"",
+          "nameForCondition": null,
+          "index": 2,
+          "preOrderIndex": 2,
+          "index2": 0,
+          "postOrderIndex": 0,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+          "issuerName": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "issuerPath": [
+            {
+              "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "total": 374,
+                "resolving": 19,
+                "restoring": 0,
+                "building": 355,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 19,
+                "dependencies": 0
+              },
+              "id": 579
+            },
+            {
+              "identifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+              "name": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "profile": {
+                "total": 4,
+                "resolving": 4,
+                "restoring": 0,
+                "building": 0,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 4,
+                "dependencies": 0
+              },
+              "id": 886
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 1,
+            "resolving": 1,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 1,
+            "dependencies": 0
+          },
+          "id": 468,
+          "issuerId": 886,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+              "module": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "moduleName": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "resolvedModuleIdentifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+              "resolvedModule": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "type": "delegated source",
+              "active": true,
+              "explanation": "",
+              "userRequest": "dll-reference library_3ce6e843d84f1ff6a325",
+              "moduleId": 886,
+              "resolvedModuleId": 886
+            },
+            {
+              "moduleIdentifier": "delegated 935 from dll-reference library_3ce6e843d84f1ff6a325",
+              "module": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "moduleName": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "resolvedModuleIdentifier": "delegated 935 from dll-reference library_3ce6e843d84f1ff6a325",
+              "resolvedModule": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+              "type": "delegated source",
+              "active": true,
+              "explanation": "",
+              "userRequest": "dll-reference library_3ce6e843d84f1ff6a325",
+              "moduleId": 466,
+              "resolvedModuleId": 466
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: List of module exports is dynamic (other exports: maybe provided (runtime-defined) and maybe used in main (runtime-defined))"
+          ],
+          "depth": 2
+        }
+      ],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./src"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "layer": null,
+      "size": 3544,
+      "sizes": {
+        "javascript": 3544
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+      "name": "./src/index.js",
+      "nameForCondition": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+      "index": 0,
+      "preOrderIndex": 0,
+      "index2": 3,
+      "postOrderIndex": 3,
+      "cacheable": true,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 374,
+        "resolving": 19,
+        "restoring": 0,
+        "building": 355,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 19,
+        "dependencies": 0
+      },
+      "id": 579,
+      "issuerId": null,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "./src",
+          "loc": "main",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": [],
+      "providedExports": [],
+      "optimizationBailout": [
+        "Statement (VariableDeclaration) with side effects in source code at 26:0-45:19",
+        "ModuleConcatenation bailout: Cannot concat with delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325: Module Concatenation is not implemented for DelegatedModule",
+        "ModuleConcatenation bailout: Cannot concat with delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325: Module Concatenation is not implemented for DelegatedModule"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/dynamic",
+      "layer": null,
+      "size": 42,
+      "sizes": {
+        "javascript": 42
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+      "name": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+      "nameForCondition": null,
+      "index": 1,
+      "preOrderIndex": 1,
+      "index2": 1,
+      "postOrderIndex": 1,
+      "optional": false,
+      "orphan": false,
+      "issuer": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "total": 374,
+            "resolving": 19,
+            "restoring": 0,
+            "building": 355,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 19,
+            "dependencies": 0
+          },
+          "id": 579
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 4,
+        "resolving": 4,
+        "restoring": 0,
+        "building": 0,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 4,
+        "dependencies": 0
+      },
+      "id": 886,
+      "issuerId": 579,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "23:0-26",
+          "moduleId": 579,
+          "resolvedModuleId": 579
+        },
+        {
+          "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "40:26-45",
+          "moduleId": 579,
+          "resolvedModuleId": 579
+        },
+        {
+          "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "45:2-17",
+          "moduleId": 579,
+          "resolvedModuleId": 579
+        },
+        {
+          "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react",
+          "loc": "47:30-49",
+          "moduleId": 579,
+          "resolvedModuleId": 579
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "Children",
+        "Component",
+        "Fragment",
+        "Profiler",
+        "PureComponent",
+        "StrictMode",
+        "Suspense",
+        "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+        "cloneElement",
+        "createContext",
+        "createElement",
+        "createFactory",
+        "createRef",
+        "forwardRef",
+        "isValidElement",
+        "lazy",
+        "memo",
+        "useCallback",
+        "useContext",
+        "useDebugValue",
+        "useEffect",
+        "useImperativeHandle",
+        "useLayoutEffect",
+        "useMemo",
+        "useReducer",
+        "useRef",
+        "useState",
+        "version"
+      ],
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module Concatenation is not implemented for DelegatedModule"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/dynamic",
+      "layer": null,
+      "size": 42,
+      "sizes": {
+        "javascript": 42
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "delegated 935 from dll-reference library_3ce6e843d84f1ff6a325",
+      "name": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+      "nameForCondition": null,
+      "index": 3,
+      "preOrderIndex": 3,
+      "index2": 2,
+      "postOrderIndex": 2,
+      "optional": false,
+      "orphan": false,
+      "issuer": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "total": 374,
+            "resolving": 19,
+            "restoring": 0,
+            "building": 355,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 19,
+            "dependencies": 0
+          },
+          "id": 579
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 3,
+        "resolving": 3,
+        "restoring": 0,
+        "building": 0,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 3,
+        "dependencies": 0
+      },
+      "id": 466,
+      "issuerId": 579,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "harmony side effect evaluation",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react-dom",
+          "loc": "24:0-33",
+          "moduleId": 579,
+          "resolvedModuleId": 579
+        },
+        {
+          "moduleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "harmony import specifier",
+          "active": true,
+          "explanation": "",
+          "userRequest": "react-dom",
+          "loc": "47:0-15",
+          "moduleId": 579,
+          "resolvedModuleId": 579
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED",
+        "createPortal",
+        "findDOMNode",
+        "flushSync",
+        "hydrate",
+        "render",
+        "unmountComponentAtNode",
+        "unstable_batchedUpdates",
+        "unstable_createPortal",
+        "unstable_renderSubtreeIntoContainer",
+        "version"
+      ],
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module Concatenation is not implemented for DelegatedModule"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/dynamic",
+      "layer": null,
+      "size": 42,
+      "sizes": {
+        "javascript": 42
+      },
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "identifier": "external \"library_3ce6e843d84f1ff6a325\"",
+      "name": "external \"library_3ce6e843d84f1ff6a325\"",
+      "nameForCondition": null,
+      "index": 2,
+      "preOrderIndex": 2,
+      "index2": 0,
+      "postOrderIndex": 0,
+      "optional": false,
+      "orphan": false,
+      "issuer": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+      "issuerName": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+      "issuerPath": [
+        {
+          "identifier": "/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/babel-loader/lib/index.js!/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/src/index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "total": 374,
+            "resolving": 19,
+            "restoring": 0,
+            "building": 355,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 19,
+            "dependencies": 0
+          },
+          "id": 579
+        },
+        {
+          "identifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+          "name": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "profile": {
+            "total": 4,
+            "resolving": 4,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 4,
+            "dependencies": 0
+          },
+          "id": 886
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 1,
+        "resolving": 1,
+        "restoring": 0,
+        "building": 0,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 1,
+        "dependencies": 0
+      },
+      "id": 468,
+      "issuerId": 886,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+          "module": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "moduleName": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "resolvedModuleIdentifier": "delegated 294 from dll-reference library_3ce6e843d84f1ff6a325",
+          "resolvedModule": "delegated ./node_modules/react/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "type": "delegated source",
+          "active": true,
+          "explanation": "",
+          "userRequest": "dll-reference library_3ce6e843d84f1ff6a325",
+          "moduleId": 886,
+          "resolvedModuleId": 886
+        },
+        {
+          "moduleIdentifier": "delegated 935 from dll-reference library_3ce6e843d84f1ff6a325",
+          "module": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "moduleName": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "resolvedModuleIdentifier": "delegated 935 from dll-reference library_3ce6e843d84f1ff6a325",
+          "resolvedModule": "delegated ./node_modules/react-dom/index.js from dll-reference library_3ce6e843d84f1ff6a325",
+          "type": "delegated source",
+          "active": true,
+          "explanation": "",
+          "userRequest": "dll-reference library_3ce6e843d84f1ff6a325",
+          "moduleId": 466,
+          "resolvedModuleId": 466
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: List of module exports is dynamic (other exports: maybe provided (runtime-defined) and maybe used in main (runtime-defined))"
+      ],
+      "depth": 2
+    }
+  ],
+  "entrypoints": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        179
+      ],
+      "assets": [
+        {
+          "name": "main.js",
+          "size": 2143
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 2143,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        179
+      ],
+      "assets": [
+        {
+          "name": "main.js",
+          "size": 2143
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 2143,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "errors": [],
+  "errorsCount": 0,
+  "warnings": [
+    {
+      "message": "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value.\nSet 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/",
+      "stack": "NoModeWarning: configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value.\nSet 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/\n    at /Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/webpack/lib/WarnNoModeSetPlugin.js:20:30\n    at Hook.eval [as call] (eval at create (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/tapable/lib/HookCodeFactory.js:19:10), <anonymous>:19:1)\n    at Hook.CALL_DELEGATE [as _call] (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/tapable/lib/Hook.js:14:14)\n    at Compiler.newCompilation (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/webpack/lib/Compiler.js:1014:30)\n    at /Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/webpack/lib/Compiler.js:1057:29\n    at eval (eval at create (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:9:1)\n    at /Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/webpack/lib/DllReferencePlugin.js:80:12\n    at Hook.eval [as callAsync] (eval at create (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:5:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/tapable/lib/Hook.js:18:14)\n    at Compiler.compile (/Users/baixc/Desktop/csdn/面试题/webpack-demo/体积优化/dll/node_modules/webpack/lib/Compiler.js:1052:28)"
+    }
+  ],
+  "warningsCount": 1,
+  "children": []
+}

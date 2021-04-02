@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dll": "webpack --config webpack.dll.js",
-    "build": "webpack"
+    "build": "webpack",
+    "build:stats": "webpack --profile --json > stats.json",
+    "build:showSpeed": "webpack --config webpack.config.showSpeed.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +21,9 @@
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
     "babel-loader": "^8.2.2",
+    "speed-measure-webpack-plugin": "^1.5.0",
     "webpack": "^5.28.0",
+    "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.6.0"
   }
 }
