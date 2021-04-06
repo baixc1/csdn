@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    a {
+      margin-right: 6px;
+      display: block;
+    }
+
+    .mu {
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>用户收藏导航模块(网址+消息)</div>
+  <div class="mu"></div>
+  <div>推荐用户导航模块（消息）</div>
+  <div class="mu"></div>
+  <div>最近常用导航模块（网址）</div>
+  <div class="mu"></div>
+  <div>用户收藏导航模块(网址+消息)</div>
+  <div class="mu"></div>
+  <input type="checkbox" id="hide_num">隐藏消息</input>
+  <input type="checkbox" id="hide_url">隐藏链接</input>
+  <script src="./index.js"></script>
+  <script src="./index2.js"></script>
+
+  <script>
+    // 导航数据
+    const list = [
+      {
+        href: "http://www.baidu.com",
+        title: "面板",
+        name: "tab1",
+        type: 'LinkNumNav'
+      },
+      {
+        href: "http://www.baidu.com",
+        title: "面板",
+        name: "tab2",
+        type: 'NumNav'
+      },
+      {
+        href: "http://www.baidu.com",
+        title: "面板",
+        name: "tab3",
+        type: 'LinkNav'
+      },
+      {
+        href: "http://www.baidu.com",
+        title: "面板",
+        name: "tab4",
+        type: 'LinkNumNav'
+      },
+    ];
+
+    // 导航模块（主体列表）
+    (() => {
+      [...document.getElementsByClassName('mu')].forEach((item, index) => {
+        const { type } = list[index]
+        const hasNum = ['LinkNumNav', 'NumNav'].includes(type)
+        const hasLink = ['LinkNumNav', 'LinkNav'].includes(type)
+        // 导航元素显示
+        item.innerHTML = window[type](
+          list.map((item, index) => {
+            const obj = { ...item }
+            // 5-10随机数
+            const r1 = Math.floor(Math.random() * 5) + 5
+            // 97 - 97+26（ascii字母）
+            let path = ''
+            for (let i = 0; i < r1; i++) {
+              path += String.fromCharCode(Math.floor(Math.random() * 26) + 97)
+              console.log(path)
+            }
+            if (hasNum) {
+              obj.num = `(消息：${r1})`
+            }
+            if (hasLink) {
+              obj.link = `(网址：http://xiaoxi.www/${path}.com`
+            }
+            return obj
+          })
+        )
+        // 注册消息事件
+        if (hasNum) {
+          Mediator
+            .register('hideAllNavNum', function () {
+              showHideNav(item, 'b', false)
+            })
+            .register('showAllNavNum', function () {
+              showHideNav(item, 'b', true)
+            })
+        }
+        // 注册链接事件
+        if (hasLink) {
+          Mediator
+            .register('hideAllNavUrl', function () {
+              showHideNav(item, 'span', false)
+            })
+            .register('showAllNavUrl', function () {
+              showHideNav(item, 'span', true)
+            })
+        }
+      });
+    })();
+
+
+    // 设置层模块（底部多选框）
+    (() => {
+      var hideNum = document.getElementById("hide_num");
+      var hideUrl = document.getElementById("hide_url");
+      [hideNum, hideUrl].forEach((item, index) => {
+        item.onchange = function () {
+          const str = index === 0 ? "Num" : "Url";
+          if (item.checked) {
+            Mediator.emit("hideAllNav" + str);
+          } else {
+            Mediator.emit("showAllNav" + str);
+          }
+        };
+      });
+    })();
+  </script>
+</body>
+
+</html>
