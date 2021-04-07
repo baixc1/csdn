@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./Iterator.js"></script>
+</head>
+
+<body>
+  <ul id="container">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    var demo = new Iterator('container', 'li')
+    console.log(demo.first())
+    console.log(demo.last())
+    console.log(demo.pre())
+    console.log(demo.get(-10))
+    console.log(demo.next(-10))
+
+    // 处理每个元素
+    demo.dealEach(function (text, color) {
+      this.innerText += text
+      this.style.color = color
+    }, '-test', 'pink')
+    // 排他方式处理元素
+    demo.exclusive([1, 2], function () {
+      this.innerText += '-被排除的'
+    }, function () {
+      this.innerText += '-被选中的'
+    })
+  </script>
+</body>
+
+</html>
