@@ -20,24 +20,17 @@ ViaIterator = {
   set(obj, key, val) {
     let ret = obj; // 对象指针，指向访问的对象层级
     var keys = key.split("."); // key 的数组
-    var keyStr = ""; // 当前访问到的链式key
-    var lastKey = keys[keys.length - 1]; //最后一个key
-    for (let v of keys) {
-      keyStr += `.${v}`;
-      // 未赋值过
+    for (var i = 0, len = keys.length; i < len - 1; i++) {
+      const v = keys[i];
       if (ret[v] === undefined) {
         ret[v] = {};
       }
-      // 赋值过，但不是对象
-      else if (!ret[v] instanceof Object) {
-        throw new Error(`obj${keyStr}不是对象`);
-      }
-      // 访问最后一个key时，赋值后返回
-      if (v === lastKey) {
-        return (ret[v] = val);
+      if (!(ret[v] instanceof Object)) {
+        throw new Error(`obj.${keys.slice(0, i + 1).join(".")}不是对象`);
       }
       ret = ret[v];
     }
+    return (ret[keys[i]] = val);
   },
 };
 
@@ -47,5 +40,8 @@ console.log(ViaIterator.get({ a: { b: { c: null } } }, "a.b.c")); // undefined
 var obj = {};
 console.log(ViaIterator.set(obj, "a.b", { c: 1 })); // { c: 1 }
 console.log(obj); // { a: { b: { c: 1 } } }
-console.log(ViaIterator.set(obj, "a.b.c", "d"));
-console.log(obj);
+try {
+  ViaIterator.set(obj, "a.b.c.val", "d");
+} catch (e) {
+  console.dir(e.message); // 'obj.a.b.c不是对象'
+}
