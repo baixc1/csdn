@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+  <div>
+    <div>
+      <ul>
+        <li><span id="s1">1</span></li>
+        <li><span id="s2">2</span></li>
+        <li><span id="s3">3</span></li>
+      </ul>
+    </div>
+    <div>
+      <ul id="u2">
+        <li><span id="s11">111<b>bbbbb</b></span></li>
+        <li><span id="s22">22</span></li>
+        <li id="l2"><span id="s33">33</span></li>
+      </ul>
+    </div>
+  </div>
+  <script src="./index.js"></script>
+  <script>
+    const s33 = document.getElementById('s33')
+    const l2 = document.getElementById('l2')
+    const u2 = document.getElementById('u2')
+    console.log(Iterpreter(s33).join('->')) //HTML->BODY|HEAD->DIV3->DIV2->UL->LI3->SPAN
+    console.log(Iterpreter(s33, l2).join('->')) //LI->SPAN
+    console.log(Iterpreter(l2).join('->')) // HTML->BODY|HEAD->DIV3->DIV2->UL->LI3
+    u2.onclick = function (e) {
+      console.log(Iterpreter(e.target, this).join('->')) // 打印点击元素相对u2的路径
+    }
+  </script>
+</body>
+
+</html>

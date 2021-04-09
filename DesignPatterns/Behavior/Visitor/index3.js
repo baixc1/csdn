@@ -1,3 +1,4 @@
+// index3.js
 // 扩展对象原型：新增数组方法（类数组对象）
 // arguments除了length属性和索引元素之外没有任何Array属性
 Object.prototype = Object.assign(Object.prototype, {

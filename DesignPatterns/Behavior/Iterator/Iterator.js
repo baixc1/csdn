@@ -1,3 +1,4 @@
+// Iterator.js
 /**
  * 迭代器（简化遍历/访问操作）
  * @param {string} containerId - 容器元素id

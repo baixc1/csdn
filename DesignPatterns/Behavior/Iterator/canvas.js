@@ -1,3 +1,4 @@
+// canvas.js
 // 分支循环嵌套问题
 
 // canvas 处理图片像素
@@ -18,7 +19,7 @@ window.onload = function () {
   // canvas蓝色矩形（蒙层3）
   dealImageYh("blue", 120, 120, 160, 160, 255);
   /**
-   *
+   * 绘制特效图片（未简化）
    * @param {string} t 类型
    * @param {*} x x坐标
    * @param {*} y
@@ -54,7 +55,7 @@ window.onload = function () {
     ctx.putImageData(canvasData, width + x, y);
   }
 
-  // 简化分支逻辑，优化性能
+  // 绘制特效图片（简化分支逻辑，优化性能）
   function dealImageYh(t, x, y, w, h, a) {
     var canvasData = ctx.getImageData(x, y, w, h);
     var data = canvasData.data;

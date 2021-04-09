@@ -1,3 +1,4 @@
+// index2.js
 // 原生对象构造器：访问者（内部访问了this）
 const toString = Object.prototype.toString;
 console.log(toString.apply({})); // [object Object]

@@ -1,3 +1,4 @@
+// ArrayAndObjectIterator.js
 // 数组原型方法 forEach
 // arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
 

@@ -1,3 +1,4 @@
+// index2.js
 // 格式化字符串
 function formatString(str, data) {
   // 全局匹配 {#xxx#} -> xxx（数字，字母，下划线）
