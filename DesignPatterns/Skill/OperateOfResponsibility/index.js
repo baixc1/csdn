@@ -1,3 +1,4 @@
+// index.js
 var A = function (selector, context) {
   return new A.fn.init(selector, context);
 };
@@ -39,6 +40,11 @@ A.fn = A.prototype = {
   splice: [].splice, // 增强数组特性
 };
 A.fn.init.prototype = A.fn; // 原型链继承
-console.log(A("#d1"));
-console.log(A("#d1").size()); // 1
-console.log(A("div", A("#d1")[0]).size()); // 4
+
+// console.log(A("#d1"));
+// console.log(A("#d1").size()); // 1
+// console.log(A("div", A("#d1")[0]).size()); // 4
+
+if (typeof module !== "undefined") {
+  module.exports = A;
+}
