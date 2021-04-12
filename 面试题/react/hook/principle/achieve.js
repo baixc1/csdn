@@ -23,6 +23,7 @@ function useEffect(callback, depArray) {
   const hasChangedDeps = deps
     ? !depArray.every((el, i) => el === deps[i])
     : true;
+  debugger;
   if (hasNoDeps || hasChangedDeps) {
     fun = callback();
     memoizedState[cursor] = depArray;
@@ -33,7 +34,12 @@ function useEffect(callback, depArray) {
 function fn() {
   const [count, setCount] = useState(0);
   const [username, setUsername] = useState("fan");
+  // 回调函数只执行一次
   useEffect(() => {
+    setTimeout(() => {
+      setCount(count + 1);
+    }, 0);
+
     console.log("count", count); // 只执行一次
   }, []);
   useEffect(() => {
