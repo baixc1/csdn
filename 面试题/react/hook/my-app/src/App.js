@@ -1,5 +1,5 @@
 // import App from "./components/Base";
-import UseReducerDemo from "./components/UseReducerDemo";
+import UseReducerDemo from "./components/UseReducerUseContextDemo";
 import UseStateDemo from "./components/UseStateDemo";
 
 export default function App() {
@@ -7,8 +7,8 @@ export default function App() {
     <div>
       <div>useReducerDemo:</div>
       <UseReducerDemo />
-      <div>useReducerDemo:</div>
-      <UseStateDemo />
+      {/* <div>UseStateDemo:</div>
+      <UseStateDemo /> */}
     </div>
   );
 }
