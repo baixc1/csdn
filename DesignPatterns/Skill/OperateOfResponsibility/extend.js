@@ -61,3 +61,134 @@ if (typeof window === "object") {
   const { a, b, c } = A;
   console.log(a, b, c); // 11 22 33
 }
+
+A.extend({
+  // 将 - 转化为驼峰
+  camelCase(str) {
+    return str.replace(/\-(\w)/g, function (all, letter) {
+      console.log(all, letter);
+      return letter.toUpperCase();
+    });
+  },
+});
+// 添加方法（事件、属性、类、html）
+A.fn.extend({
+  // 事件，创建不同环境的函数，减少调用时的校验
+  on: (function () {
+    // 标志浏览器 DOM2级事件
+    if (document.addEventListener) {
+      return function (type, fn) {
+        for (var i = 0; i < this.length; i++) {
+          this[i].addEventListener(type, fn, false);
+        }
+        return this;
+      };
+    }
+    // IEDOM2级事件
+    else if (document.attachEvent) {
+      return function (type, fn) {
+        for (var i = 0; i < this.length; i++) {
+          this[i].attachEvent(`on${type}`, fn);
+        }
+        return this;
+      };
+    }
+    // 不支持DOM2级事件
+    else {
+      return function (type, fn) {
+        for (var i = 0; i < this.length; i++) {
+          this[i][`on${type}`] = fn;
+        }
+        return this;
+      };
+    }
+  })(),
+  /**
+   *
+   * @returns this
+   */
+  css() {
+    const args = arguments,
+      len = args.length;
+    if (this.length < 1) return this;
+    // 只有一个参数
+    if (len === 1) {
+      // 获取样式 $.css('width)
+      if (typeof args[0] === "string") {
+        return getComputedStyle(this[0])[A.camelCase(args[0])];
+      }
+      // 设置 $.css({width: '20px','background-color':'red'})
+      else if (typeof args[0] === "object" && args[0] !== null) {
+        for (var i in args[0]) {
+          for (var j = 0; j < this.length; j++) {
+            this[j].style[A.camelCase(i)] = args[0][i];
+          }
+        }
+      }
+    }
+    // 两个参数 $.css('width','30px')
+    else if (len === 2) {
+      for (var j = 0; j < this.length; j++) {
+        this[j].style[args[0]] = args[1];
+      }
+    }
+    return this;
+  },
+  attr() {
+    const args = arguments,
+      len = args.length;
+    if (this.length < 1) return this;
+    // 只有一个参数
+    if (len === 1) {
+      // 获取样式 $.attr('class')
+      if (typeof args[0] === "string") {
+        return getAttribute(this[0])[name];
+      }
+      // 设置 $.attr({name: 'xx','id':'xx'})
+      else if (typeof args[0] === "object" && args[0] !== null) {
+        for (var i in args[0]) {
+          for (var j = 0; j < this.length; j++) {
+            this[j].setAttribute(i, args[0][i]);
+          }
+        }
+      }
+    }
+    // 两个参数 $.attr('id','xx')
+    else if (len === 2) {
+      for (var j = 0; j < this.length; j++) {
+        this[j].setAttribute(args[0], args[1]);
+      }
+    }
+    return this;
+  },
+  html() {
+    const args = arguments,
+      len = args.length;
+    if (len === 0) {
+      return this[0] && this[0].innerHTML;
+    } else {
+      // 一个参数
+      for (var i = 0; i < this.length; i++) {
+        this[i].innerHTML = args[0];
+      }
+    }
+    return this;
+  },
+});
+const input = A("#input1");
+input
+  .css({
+    border: "1px solid #ddd",
+    "background-color": "red",
+    width: "100px",
+  })
+  .attr({
+    name: "input",
+    class: "xx",
+  });
+console.log(input.css("background-color"));
+A("#div2")
+  .html("<p>我是xxx</p>")
+  .on("click", function (e) {
+    console.log(e);
+  });
