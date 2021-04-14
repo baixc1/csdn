@@ -29,11 +29,15 @@
     <br>
     <br>
     <button class="btn">登陆</button>
+    <button class="btn1">获取cookie</button>
   </div>
 </body>
 <script>
   var btn = document.querySelector('.btn');
-
+  var btn1 = document.querySelector('.btn1');
+  btn1.onclick = function () {
+    console.log(document.cookie)
+  }
   btn.onclick = function () {
     var userName = document.querySelector('.userName').value;
     var password = document.querySelector('.password').value;
@@ -54,8 +58,8 @@
         return response.json();
       })
       .then(function (res) {
-        alert(res.msg);
-        window.location.href = "http://localhost:3200/home";
+        console.log(res.msg);
+        // window.location.href = "http://localhost:3200/home";
       })
       .catch(err => {
         message.error(`本地测试错误 ${err.message}`);

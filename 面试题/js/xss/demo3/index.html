@@ -19,13 +19,23 @@
 </body>
 <script>
   // 基于DOM(DOM based XSS)
-  // 输入：'' onclick=alert('哈哈，你被攻击了')
   var btn = document.querySelector('.btn');
   var content = document.querySelector('.content');
 
   btn.onclick = function () {
     var url = document.querySelector('.url').value;
-    content.innerHTML = `<a href=${url}>跳转到输入的url</a>`
+    const dict = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&quot;'
+    };
+    // for (let key in dict) {
+    //   url = url.replace(new RegExp(key, 'g'), dict[key])
+    // }
+    url = encodeURIComponent(url)
+    content.innerHTML = (`<a href=${url}>跳转到输入的url</a>`)
   }
 </script>
 
