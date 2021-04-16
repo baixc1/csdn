@@ -29,6 +29,7 @@ Layer.prototype = {
     function show() {
       that.layer.className = "show";
     }
+    // container enter 时显示，leave时不显示
     this.on(this.container, "mouseenter", function () {
       // 清除隐藏浮层方法计时器
       throttle(true, hide);
@@ -40,6 +41,7 @@ Layer.prototype = {
     });
     for (var i = 0; i < this.lis.length; i++) {
       this.lis[i].index = i;
+      // 先隐藏所有图片，再显示hover的图片
       this.on(this.lis[i], "mouseenter", function () {
         var index = this.index;
         for (var j = 0; j < that.imgs.length; j++) {
