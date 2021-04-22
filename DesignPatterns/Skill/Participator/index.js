@@ -1,3 +1,4 @@
+// index.js
 // 函数原型bind方法实现
 Function.prototype.bind1 = function (context) {
   // 当前函数对象
@@ -14,5 +15,5 @@ var obj = {
 var f = function () {
   console.log(this);
 };
-f.bind(obj)();
-f.bind1(obj)();
+f.bind(obj)(); // { a: 1, b: 2 }
+f.bind1(obj)(); // { a: 1, b: 2 }

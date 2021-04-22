@@ -1,3 +1,4 @@
+// index3.js
 // 点击按钮时，传递数据
 
 Function.prototype.bind1 = function (context) {

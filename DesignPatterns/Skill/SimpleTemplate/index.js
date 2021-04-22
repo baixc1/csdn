@@ -1,3 +1,4 @@
+// index.js
 // 需求：使用简单模版模式，创建视图
 
 // 命名空间
@@ -61,22 +62,7 @@ A.strategy = {
 A.init = function (data) {
   this.strategy[data.type](data);
 };
-A.init({
-  containerId: "container",
-  id: "3232",
-  type: "listPart",
-  data: {
-    lis: [
-      {
-        strong: "strong1",
-        span: "(span1)",
-      },
-      {
-        strong: "strong2",
-        span: "(span2)",
-      },
-    ],
-    h2: "h2 text",
-    p: "p text",
-  },
-});
+
+if (typeof module === "object") {
+  module.exports = A;
+}

@@ -145,11 +145,17 @@ var four = (function () {
     console.log("four fail");
     // 模拟数据
     four.data = 2;
-    debugger;
     p.reject();
   }, 2000);
   return p;
 })();
+/**
+ * 依次输出
+ * first done
+ * second done
+ * success { status: 'resolved', data: 0 } { status: 'resolved', data: 1 } { status: 'resolved', data: 2 } { status: 'resolved', data: 3 }
+ * four fail
+ */
 waiter
   .when(zero, first, second, third)
   .done(function () {

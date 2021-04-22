@@ -1,3 +1,4 @@
+// index.js
 // 反柯里化
 Function.prototype.uncurry = function () {
   const that = this;
