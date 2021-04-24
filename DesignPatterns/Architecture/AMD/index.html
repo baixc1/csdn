@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./main.js"></script>
+</head>
+
+<body>
+  <button id="btn">点我</button>
+  <div id="content"></div>
+  <script>
+    // 依次传递event和dom模块的路径，获取对应顺序的模块events和dom
+    F.module(['lib/event', 'lib/dom'], function (events, dom) {
+      let i = 0
+      events.on('btn', 'click', function () {
+        dom.html('content', `点了${i++}下`)
+      })
+    })
+  </script>
+</body>
+
+</html>
