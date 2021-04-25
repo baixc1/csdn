@@ -48,8 +48,18 @@ function _compileTpl(str) {
   return new Function("templateData", fnBody);
 }
 
-console.log(_dealTpl("<a>{%=text%}</a>"));
-console.log(_compileTpl("<a>{%=text%}</a>")({ text: "11" }));
+// console.log(_dealTpl("<a>{%=text%}</a>"));
+// console.log(_compileTpl("<a>{%=text%}</a>")({ text: "11" }));
+// console.log(
+//   _compileTpl(`class="data-lang {% if(selected) { %}selected {% } %}""></a>`)
+// );
 console.log(
-  _compileTpl(`class="data-lang {% if(selected) { %}selected {% } %}""></a>`)
+  _compileTpl(`
+  <div>
+  {% for(var i=0,len=list.length;i<len;i++){
+      var item = list[i];%}
+    <a>{%=item.text%}</a>
+  {% } %}
+  </div>
+  `)
 );

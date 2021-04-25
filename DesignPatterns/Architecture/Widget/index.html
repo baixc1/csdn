@@ -7,12 +7,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="./main.js"></script>
 </head>
 
 <body>
-  <script type="text/template"
-    id="s1"><a class="data-lang {% if(selected) { %}selected {% } %}" value="{%=value%}">{%=text%}</a></script>
-  <script src="./index.js"></script>
+  <div id="root"></div>
+  <script type="text/template" id="s1">
+    <div id="tag_cloud">
+      {% for(var i=0,len=list.length;i<len;i++){
+          var item = list[i];%}
+      <a 
+        href="#" 
+        class="item {% if(item.selected){  %}selected {% } %}" 
+        title="{%=item.title%}">{%=item.text%}</a>
+      {% } %}
+    </div>
+  </script>
+  <script>
+    F.module(['lib/template', 'lib/dom'], function (template, dom) {
+      const str = template('s1', {
+        list: [
+          {
+            selected: true,
+            title: 'title1',
+            text: 'text1'
+          },
+          {
+            selected: false,
+            title: 'title2',
+            text: 'text2'
+          }
+        ]
+      })
+      console.log(str)
+      dom.html('root', str)
+    })
+  </script>
 </body>
 
 </html>
