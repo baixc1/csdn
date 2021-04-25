@@ -12,6 +12,8 @@ function f(templateData) {
   fn = null;
   return templates.join("");
 }
+console.log(f({ text: 1 })); // <a>1</a>
+
 function f1(templateData) {
   var templates = [];
   var fn = (function (data) {
@@ -20,16 +22,19 @@ function f1(templateData) {
       temKey += "var " + key + '=data["' + key + '"];';
     }
     eval(temKey);
-    templates.push('class="data-lang ');
+    templates.push('<a class="data-lang ');
     if (selected) {
       templates.push("selected ");
     }
-    templates.push('""></a>');
+    templates.push('"></a>');
     temKey = null;
   })(templateData);
   fn = null;
   return templates.join("");
 }
+// <a class="data-lang selected "></a>
+console.log(f1({ selected: true }));
+
 function f2(templateData) {
   var templates = [];
   var fn = (function (data) {
@@ -49,7 +54,7 @@ function f2(templateData) {
   fn = null;
   return templates.join("");
 }
-// f({ selected: true, value: "zh", text: "zh-text" });
+//  <div>      <a>1</a>      <a>2</a>    </div>
 console.log(
   f2({
     list: [

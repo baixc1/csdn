@@ -1,3 +1,4 @@
+// lib/template.js
 F.module("lib/template", function () {
   // 模版引擎
   const _TplEngine = function (str, data) {
